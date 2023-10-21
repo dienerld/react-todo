@@ -41,7 +41,7 @@
         border-radius: 0.5rem;
         border: none;
         padding: 0 1rem;
-         color: var(--gray-100);
+        color: var(--gray-100);
 
         &::placeholder {
           color: var(--gray-300);
@@ -50,12 +50,13 @@
 
         &:active,
         &:focus {
-          outline: none;
-          border: 1px solid var(--primary-dark);
+          border: none;
+          outline: 1px solid var(--primary-dark);
         }
       }
 
       button {
+        box-sizing: border-box;
         padding: 1rem;
         border-radius: 0.5rem;
         border: none;
@@ -65,12 +66,20 @@
         background-color: var(--secondary-dark);
         color: var(--gray-100);
         cursor: pointer;
+        outline: none;
         transition: 0.2s;
+
         svg {
           color: var(--gray-100);
         }
+
         &:hover {
           background-color: var(--secondary);
+        }
+
+        &:active,
+        &:focus {
+          outline: 1px solid var(--primary-dark);
         }
       }
     }

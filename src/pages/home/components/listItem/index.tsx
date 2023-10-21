@@ -1,14 +1,19 @@
 import { Trash2 } from 'lucide-react';
 import styles from './styles.module.scss';
 
-export function ListItem() {
+interface ListItemProps {
+  todo: {
+    id: string;
+    content: string;
+    isCompleted: boolean;
+  };
+}
+
+export function ListItem({ todo }: ListItemProps) {
   return (
     <div className={styles.container}>
-      <input type="checkbox" />
-      <p>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
-        Duis vel sed fames integer.
-      </p>
+      <input type="checkbox" checked={todo.isCompleted} />
+      <p>{todo.content} </p>
       <button>
         <Trash2 size={20} />
       </button>

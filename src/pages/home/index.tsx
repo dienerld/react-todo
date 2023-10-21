@@ -4,6 +4,24 @@ import Rocket from '@/assets/rocket.svg';
 import { EmptyList } from './components/emptyList';
 import { ListItem } from './components/listItem';
 
+const todos = [
+  {
+    id: '1',
+    content: 'Tarefa 1',
+    isCompleted: false,
+  },
+  {
+    id: '2',
+    content: 'Tarefa 2',
+    isCompleted: false,
+  },
+  {
+    id: '3',
+    content: 'Tarefa 3',
+    isCompleted: true,
+  },
+];
+
 export function Home() {
   return (
     <main className={styles.container}>
@@ -34,8 +52,11 @@ export function Home() {
             </p>
           </div>
           <div className={styles.todosContent}>
-            <ListItem />
-            <EmptyList />
+            {todos.length > 0 ? (
+              todos.map((todo) => <ListItem key={todo.id} todo={todo} />)
+            ) : (
+              <EmptyList />
+            )}
           </div>
         </section>
       </div>

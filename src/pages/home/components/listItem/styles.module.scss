@@ -35,6 +35,11 @@
         border: 2px solid var(--primary);
       }
     }
+
+    &:active,
+    &:focus {
+      outline: 1px solid var(--primary-dark);
+    }
   }
 
   p {
@@ -55,11 +60,17 @@
     color: var(--gray-300);
     cursor: pointer;
     padding: 0.25rem;
+    border-radius: 0.25rem;
 
     &:hover {
       color: var(--danger);
       background-color: var(--gray-400);
       border-radius: 0.25rem;
+    }
+
+    &:active,
+    &:focus {
+      outline: 1px solid var(--primary-dark);
     }
   }
 }

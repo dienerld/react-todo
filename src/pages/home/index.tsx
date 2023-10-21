@@ -1,28 +1,17 @@
-import { PlusCircle } from 'lucide-react';
 import styles from './styles.module.scss';
 import Rocket from '@/assets/rocket.svg';
 import { EmptyList } from './components/emptyList';
 import { ListItem } from './components/listItem';
-
-const todos = [
-  {
-    id: '1',
-    content: 'Tarefa 1',
-    isCompleted: false,
-  },
-  {
-    id: '2',
-    content: 'Tarefa 2',
-    isCompleted: false,
-  },
-  {
-    id: '3',
-    content: 'Tarefa 3',
-    isCompleted: true,
-  },
-];
+import { useTodosStore } from '@/store';
+import { CreateTodo } from './components/createTodo';
 
 export function Home() {
+  const { todos } = useTodosStore();
+  const stats = {
+    total: todos.length,
+    completed: todos.filter((todo) => todo.isCompleted).length,
+  };
+
   return (
     <main className={styles.container}>
       <header className={styles.header}>
@@ -34,21 +23,17 @@ export function Home() {
       </header>
 
       <div className={styles.contentWrapper}>
-        <section className={styles.inputWrapper}>
-          <input type="text" placeholder="Adicione uma nova tarefa" />
-          <button>
-            <PlusCircle size={20} />
-            Criar
-          </button>
-        </section>
-
+        <CreateTodo />
         <section className={styles.todos}>
           <div className={styles.todosHeader}>
             <p>
-              Minhas tarefas <span>3</span>
+              Minhas tarefas <span>{stats.total}</span>
             </p>
             <p>
-              Minhas tarefas <span>1 de 3</span>
+              Minhas tarefas{' '}
+              <span>
+                {stats.completed} de {stats.total}
+              </span>
             </p>
           </div>
           <div className={styles.todosContent}>

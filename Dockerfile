@@ -8,11 +8,13 @@ RUN npm install -g pnpm \
 
 WORKDIR /app
 
+
+
+FROM base AS build
+
 COPY . .
 
 RUN pnpm install --frozen-lockfile
-
-FROM base AS build
 
 RUN pnpm run build
 
